@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('registrations', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('user')->onDelete('cascade');
-            $table->foreignId('course_id')->constrained('course')->onDelete('cascade');
-            $table->integer('progress')->default(0);
+            $table->string('name'); // Campo para el nombre de la categoría
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('registrations');
+        Schema::dropIfExists('categories');
     }
 };

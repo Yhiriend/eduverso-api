@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -55,4 +57,20 @@ Route::prefix('invoices')->group(function () {
     Route::get('/{id}', [InvoiceController::class, 'show']); // Obtener una factura específica
     Route::put('/{id}', [InvoiceController::class, 'update']); // Actualizar una factura
     Route::delete('/{id}', [InvoiceController::class, 'destroy']); // Eliminar una factura
+});
+
+Route::prefix('registrations')->group(function () {
+    Route::get('/', [RegistrationController::class, 'index']); // Obtener todas las inscripciones
+    Route::post('/', [RegistrationController::class, 'store']); // Crear una nueva inscripción
+    Route::get('/{id}', [RegistrationController::class, 'show']); // Obtener una inscripción específica
+    Route::put('/{id}', [RegistrationController::class, 'update']); // Actualizar una inscripción
+    Route::delete('/{id}', [RegistrationController::class, 'destroy']); // Eliminar una inscripción
+});
+
+Route::prefix('categories')->group(function () {
+    Route::get('/', [CategoryController::class, 'index']); // Obtener todas las categorías
+    Route::post('/', [CategoryController::class, 'store']); // Crear una nueva categoría
+    Route::get('/{id}', [CategoryController::class, 'show']); // Obtener una categoría específica
+    Route::put('/{id}', [CategoryController::class, 'update']); // Actualizar una categoría
+    Route::delete('/{id}', [CategoryController::class, 'destroy']); // Eliminar una categoría
 });
