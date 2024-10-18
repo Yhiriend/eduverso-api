@@ -4,7 +4,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CurseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LessonController;
-
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\InvoiceController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -38,4 +39,20 @@ Route::prefix('lessons')->group(function () {
     Route::get('/{id}', [LessonController::class, 'show']); // Obtener una lección específica
     Route::put('/{id}', [LessonController::class, 'update']);
     Route::delete('/{id}', [LessonController::class, 'destroy']);
+});
+
+Route::prefix('payments')->group(function () {
+    Route::get('/', [PaymentController::class, 'index']); // Obtener todos los pagos
+    Route::post('/', [PaymentController::class, 'store']); // Crear un nuevo pago
+    Route::get('/{id}', [PaymentController::class, 'show']); // Obtener un pago específico
+    Route::put('/{id}', [PaymentController::class, 'update']); // Actualizar un pago
+    Route::delete('/{id}', [PaymentController::class, 'destroy']); // Eliminar un pago
+});
+
+Route::prefix('invoices')->group(function () {
+    Route::get('/', [InvoiceController::class, 'index']); // Obtener todas las facturas
+    Route::post('/', [InvoiceController::class, 'store']); // Crear una nueva factura
+    Route::get('/{id}', [InvoiceController::class, 'show']); // Obtener una factura específica
+    Route::put('/{id}', [InvoiceController::class, 'update']); // Actualizar una factura
+    Route::delete('/{id}', [InvoiceController::class, 'destroy']); // Eliminar una factura
 });
