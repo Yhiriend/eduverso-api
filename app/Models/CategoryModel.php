@@ -12,7 +12,12 @@ class CategoryModel extends Model
     protected $table = 'categories';
 
     protected $fillable = [
-        'name', // Campo para el nombre de la categoría
-        'description', // Campo para la descripción
+        'name',
+        'description',
     ];
+
+    public function courses()
+    {
+        return $this->belongsToMany(CourseModel::class, 'category_course', 'category_id', 'course_id');
+    }
 }

@@ -38,7 +38,7 @@ class CategoryController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'description' => 'nullable|string', // Validación para la descripción
+            'description' => 'nullable|string',
         ]);
 
         if ($validator->fails()) {
@@ -81,7 +81,7 @@ class CategoryController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'sometimes|required|string|max:255',
-            'description' => 'sometimes|nullable|string', // Validación para la descripción
+            'description' => 'sometimes|nullable|string',
         ]);
 
         if ($validator->fails()) {

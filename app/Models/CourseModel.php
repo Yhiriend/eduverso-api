@@ -17,4 +17,9 @@ class CourseModel extends Model
     {
         return $this->belongsTo(UserModel::class);
     }
+
+    public function categories()
+    {
+        return $this->belongsToMany(CategoryModel::class, 'category_course', 'course_id', 'category_id');
+    }
 }

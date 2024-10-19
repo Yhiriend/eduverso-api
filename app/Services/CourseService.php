@@ -6,35 +6,40 @@ use App\Repositories\CourseRepository;
 
 class CourseService
 {
-    protected $curseRepository;
+    protected $courseRepository;
 
-    public function __construct(CourseRepository $curseRepository)
+    public function __construct(CourseRepository $courseRepository)
     {
-        $this->curseRepository = $curseRepository;
+        $this->courseRepository = $courseRepository;
     }
 
     public function getAllCourses()
     {
-        return $this->curseRepository->all();
-    }
-
-    public function getCourse($id)
-    {
-        return $this->curseRepository->find($id);
+        return $this->courseRepository->getAll();
     }
 
     public function createCourse(array $data)
     {
-        return $this->curseRepository->create($data);
+        return $this->courseRepository->create($data);
+    }
+
+    public function getCourse($id)
+    {
+        return $this->courseRepository->find($id);
     }
 
     public function updateCourse($id, array $data)
     {
-        return $this->curseRepository->update($id, $data);
+        return $this->courseRepository->update($id, $data);
     }
 
     public function deleteCourse($id)
     {
-        return $this->curseRepository->delete($id);
+        return $this->courseRepository->delete($id);
+    }
+
+    public function getCoursesByCategories(array $categories)
+    {
+        return $this->courseRepository->getByCategories($categories);
     }
 }
