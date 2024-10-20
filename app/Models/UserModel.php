@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class UserModel extends Model
+class UserModel extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     protected $table = 'user';
 
@@ -15,6 +16,14 @@ class UserModel extends Model
         'name',
         'email',
         'password',
-        'role'
+        'role',
     ];
+
+    // Si usas hashing para la contraseña, asegúrate de definir el atributo "hidden"
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    // Otras configuraciones necesarias, como casts, pueden ir aquí
 }
